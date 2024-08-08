@@ -1,0 +1,42 @@
+version: '3.8'
+services:
+  db:
+    image: mysql:8.0.27
+    networks:
+      - db-network
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=super-app
+    volumes:
+      - db_data:/var/lib/mysql
+
+  node:
+    build:
+      context: node/
+      dockerfile: Dockerfile
+    networks:
+      - db-network
+      - php-network
+    ports:
+      - 3000:3000
+  
+  php:
+    build:
+      context: php/
+      dockerfile: Dockerfile
+    networks:
+      - php-network
+    ports:
+      - 80:80
+networks:
+  db-network:
+  php-network:
+volumes:
+  db_data:
+    
+
+  
+
+
+  
+    
