@@ -30,8 +30,8 @@ jobs:
     - name: Tag Docker image
       run: |
         IMAGE_DATE=$(date +%Y-%m-%d-%H-%M-%S)
-        docker image tag super-app-node ${{ secrets.DOCKER_USERNAME }}/devops-node:${IMAGE_DATE}
-        docker image tag super-app-php ${{ secrets.DOCKER_USERNAME }}/devops-php:${IMAGE_DATE}
+        docker image tag devops-node ${{ secrets.DOCKER_USERNAME }}/super-app-node:${IMAGE_DATE}
+        docker image tag devops-php ${{ secrets.DOCKER_USERNAME }}/super-app-php:${IMAGE_DATE}
 
     - name: Push Docker image
       run: |
